@@ -89,6 +89,20 @@ This application uses the GitHub Users Search API:
 - **Error Handling**: Graceful handling of empty searches and API errors
 - **UI Updates**: Thread-safe UI updates using `receive(on: RunLoop.main)`
 
+
+## Screenshots
+
+<img width="1206" height="2622" alt="image" src="https://github.com/user-attachments/assets/ee18b385-5d5e-43ae-8c5c-98dd172240af" />
+
+<img width="1206" height="2622" alt="image" src="https://github.com/user-attachments/assets/596ba6e3-19cb-4ac8-83c7-2764ab4f204a" />
+
+
+
+
+https://github.com/user-attachments/assets/ec71e98a-8823-4a4c-9149-a2af322d7a82
+
+
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
