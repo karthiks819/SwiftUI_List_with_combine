@@ -1,0 +1,82 @@
+# Combine Framework - Presentation Slides Summary
+
+## Slide 1: Introduction to Combine
+- Apple's reactive programming framework
+- Declarative API for processing values over time
+- Released in iOS 13 / macOS 10.15
+
+## Slide 2: Why Combine?
+- Handles async events elegantly
+- Replaces completion handlers & delegates
+- Built-in error handling
+- Type-safe data flows
+- Integrates with SwiftUI
+
+## Slide 3: Core Components
+### Publishers
+- Emit values over time
+- Examples: Just, Future, Publishers.Sequence
+
+### Subscribers  
+- Consume values from publishers
+- Examples: sink, assign
+
+### Subjects
+- Combine characteristics of publishers & subscribers
+- CurrentValueSubject, PassthroughSubject
+
+## Slide 4: Operators Overview
+- Transform operators: map, tryMap, flatMap
+- Filter operators: filter, removeDuplicates
+- Time-based: debounce, throttle, delay
+- Error handling: catch, retry, replaceError
+
+## Slide 5: Publisher Example
+```swift
+let cancellable = Just("Hello")
+    .sink { value in
+        print(value)
+    }
+```
+
+## Slide 6: Network Request Example
+```swift
+URLSession.shared
+    .dataTaskPublisher(for: url)
+    .map(\.data)
+    .decode(type: Model.self, decoder: JSONDecoder())
+    .sink(
+        receiveCompletion: { completion in /* handle completion */ },
+        receiveValue: { model in /* handle model */ }
+    )
+```
+
+## Slide 7: Memory Management
+- Store cancellables to prevent premature disposal
+- Use Set<AnyCancellable> for multiple subscriptions
+- Call .store(in:) to manage lifetime
+
+## Slide 8: Best Practices
+- Start with simple examples
+- Understand the data flow
+- Handle errors appropriately
+- Use proper schedulers for UI updates
+- Avoid retain cycles
+
+## Slide 9: Integration with SwiftUI
+- @Published properties
+- .onReceive modifier
+- ObservableObject protocol
+- Publishers in ViewModifiers
+
+## Slide 10: Common Pitfalls to Avoid
+- Forgetting to store cancellables
+- Incorrect scheduler usage
+- Overcomplicating simple operations
+- Creating retain cycles
+
+## Slide 11: Learning Resources
+- Apple's Combine documentation
+- WWDC sessions on Combine
+- Sample projects
+- Practice by refactoring existing code

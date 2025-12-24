@@ -1,0 +1,48 @@
+THREAD: Learning Combine Framework? Here's what I wish I knew when starting! 🚀
+
+Just revisited an old presentation about Combine and realized how valuable this knowledge still is for iOS developers. Here's my take on mastering Combine:
+
+1️⃣ Start with the basics: Combine is Apple's reactive programming framework that makes handling asynchronous events much cleaner than traditional completion handlers or delegates.
+
+2️⃣ Understand Publishers & Subscribers: Everything in Combine revolves around these two concepts. Publishers emit values, Subscribers receive them. It's like a pipeline of data!
+
+3️⃣ Learn the common operators: map, filter, flatMap, catch, retry - these help you transform and handle your data streams effectively.
+
+4️⃣ Pay attention to memory management: Always store your Cancellable objects or your subscriptions will be released prematurely.
+
+5️⃣ Practice with real examples: Build a simple API call or timer-based project to see how Combine handles real-world async operations.
+
+The framework really shines when dealing with complex async operations, UI updates, and data flow management in modern iOS apps. It pairs beautifully with SwiftUI for reactive UI updates.
+
+If you're currently learning it, don't get discouraged by the initial complexity - the reactive approach pays off significantly in larger applications!
+
+#CombineFramework #iOSDevelopment #Swift #ReactiveProgramming #SwiftUI #MobileDevelopment #Learning #Programming #Tech #Apple
+
+---
+
+BONUS TIP: Here's a simple example of Combine in action:
+
+let cancellable = Just("Hello Combine")
+    .sink { value in
+        print(value)  // Output: Hello Combine
+    }
+
+For network requests:
+let url = URL(string: "https://api.github.com/users/octocat")!
+let cancellable = URLSession.shared
+    .dataTaskPublisher(for: url)
+    .map(\.data)
+    .decode(type: User.self, decoder: JSONDecoder())
+    .receive(on: DispatchQueue.main)
+    .sink(
+        receiveCompletion: { completion in
+            if case .failure(let error) = completion {
+                print("Error: $error)")
+            }
+        },
+        receiveValue: { user in
+            print("User: $user.name)")
+        }
+    )
+
+Start small, practice consistently, and Combine will become second nature! 🌊
